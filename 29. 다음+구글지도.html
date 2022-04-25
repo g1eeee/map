@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>다음+구글지도</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    body {
+      color: #333;
+    }
+
+    /* .google_map start */
+    .google_map {
+      max-width: 1280px;
+      width: 100%;
+      /* 양옆에 여백주고싶으면 width값(%)를 줄이면 됨, 그리고 iframe :  100% 으로 주면 부모크기에 맞게 조정*/
+      margin: 100px auto;
+    }
+
+    .google_map div h4 {
+      font-size: 25px;
+      word-break: keep-all;
+      /* 단어별로 줄바꿈시켜주는 태그와 값(띄어쓰기가 되어있는 영역의 줄바꿈) */
+    }
+
+    .google_map div p {
+      font-size: 18px;
+      margin-top: 10px
+    }
+
+    .google_map div dl {
+      display: flex;
+      margin: 30px 0 40px;
+    }
+
+    .google_map div dl dt {
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    .google_map div dl dd {
+      margin-right: 30px;
+    }
+
+    .google_map iframe {
+      width: 100%;
+    }
+
+    @media screen and (max-width : 640px) {
+      .google_map div dl {
+        flex-wrap: wrap;
+      }
+
+      /* 뒤에 공간이 부족할 때 그 안에 자식들이 아래로 떨어지도록 도와줌 */
+      .google_map div dl dt {
+        width: 12%;
+      }
+
+      .google_map div dl dd {
+        width: 80%;
+        margin-right: 0;
+      }
+    }
+    /* max-width : 640px 이하 */
+  
+    /* .kakao_map start */
+    .kakao_map{
+      background: url('./images/city05.jpg') center center / cover no-repeat;
+      background-attachment: fixed;
+      color : #fff;
+      padding : 100px 0;
+    }
+    .kakao_map>div{
+      /* 첫번째 div가 아닌 모든 div에 아래 값 주면 지도가 이상하게 나옴, 모든 div들이 중앙정렬되게 됨  */
+      max-width: 1280px;
+      width : 95% !important;
+      /* 아래 지도 노드에 width : 100%잡아서 여기 95%줘도 좌우 여백 안남게됨, 그래서 !important를 주어 우선순위로 줌 */
+      margin : 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="google_map">
+    <div>
+      <h4>그린컴퓨터아카데미 부산점</h4>
+      <p>부산광역시 부산진구 부전동 중앙대로 688</p>
+      <dl>
+        <dt>Tel.</dt>
+        <dd>
+          <a href="tel:010-0000-0000">010-0000-0000</a>
+          <!-- a태그로 주는 이유 : 누르면 바로 전화 가게 하기 위해서 -->
+        </dd>
+        <dt>Fax.</dt>
+        <dd><a href="tel:051-000-0000">051-000-0000</a></dd>
+      </dl>
+    </div>
+    <!-- 아래 구글 지도 -->
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3262.0976041024333!2d129.05731981524443!3d35.15418648032044!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568eb70f147a9c9%3A0x5f8432a247bb69fa!2z6re466aw7Lu07ZOo7YSw7JWE7Lm0642w66-4IOu2gOyCsOy6oO2NvOyKpA!5e0!3m2!1sko!2skr!4v1650881778940!5m2!1sko!2skr"
+      width="1280" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section> <!-- .google_map end -->
+
+  <section class="kakao_map">
+    <div>
+      <h4>그린컴퓨터아카데미 부산점</h4>
+      <p>부산광역시 부산진구 부전동 중앙대로 688</p>
+      <dl>
+        <dt>Tel.</dt>
+        <dd>
+          <a href="tel:010-0000-0000">010-0000-0000</a>
+          <!-- a태그로 주는 이유 : 누르면 바로 전화 가게 하기 위해서 -->
+        </dd>
+        <dt>Fax.</dt>
+        <dd><a href="tel:051-000-0000">051-000-0000</a></dd>
+      </dl>
+    </div>
+    <!-- 아래 카카오 지도 -->
+    <!-- * 카카오맵 - 지도퍼가기 -->
+    <!-- 1. 지도 노드 -->
+    <div style="width : 100%" id="daumRoughmapContainer1650886011341" class="root_daum_roughmap root_daum_roughmap_landing"></div>
+
+    <!--
+	  2. 설치 스크립트
+	  * 지도 퍼가기 서비스를 2개 이상 넣을 경우, 설치 스크립트는 하나만 삽입합니다.
+    -->
+    <script charset="UTF-8" class="daum_roughmap_loader_script"
+      src="https://ssl.daumcdn.net/dmaps/map_js_init/roughmapLoader.js"></script>
+
+    <!-- 3. 실행 스크립트 -->
+    <script charset="UTF-8">
+      new daum.roughmap.Lander({
+        "timestamp": "1650886011341",
+        "key": "29yc3",
+        // "mapWidth" : "1280",
+        "mapHeight": "400"
+      }).render();
+    </script>
+  </section><!-- .kakao_map end -->
+</body>
+
+</html>
